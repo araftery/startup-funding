@@ -17,6 +17,11 @@
     <!--Using Flatly swatch by default -->
     <link href="http://netdna.bootstrapcdn.com/bootswatch/3.0.3/yeti/bootstrap.min.css" rel="stylesheet">
 
+      <link href="visualization/final.css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script src="//d3js.org/queue.v1.min.js"></script>
+
     <title>CS 171 Project: Startup Funding</title>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -41,6 +46,8 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home</a></li>
+            <li><a href="/walkthrough.html">Walkthrough</a></li>
+            <li><a href="/processbook.html">Process Book</a></li>
 
 
           </ul>
@@ -49,7 +56,14 @@
     </div><!-- /.navbar -->
 
     <div class="container">
-    Test
+        <div id="bar"></div>
+      <div id="treemap"></div>
+      <div id="sidebar">
+        <div id="grandparent"></div>
+        <div id="industries"></div>
+        <div id="profile"></div>
+      </div>
+      <script src="visualization/final.js"></script>
     </div>
   </body>
 </html>

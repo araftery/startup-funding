@@ -1,0 +1,71 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: auto;
+  position: relative;
+  width: 960px;
+}
+
+/* controls */
+
+#controls {
+  margin-top: 10px;
+}
+
+#rounds {
+  margin-left: 10px;
+}
+
+[name="round"] {
+  margin-right: 10px;
+}
+
+a {
+     color: steelblue;
+}
+
+/* treemap */
+
+.node {
+  border: solid 1px white;
+  font: 10px sans-serif;
+  line-height: 12px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+}
+
+#tooltip {
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+/* details */
+
+#detail_company,
+#timeline,
+#detail_round {
+  display: inline-block;
+  vertical-align: top;
+}
+
+#detail_company,
+#detail_round {
+  width: 240px;
+}
+
+#detail_round {
+  text-align: right;
+}
+
+#timeline {
+  margin-left: 10px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
