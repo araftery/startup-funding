@@ -59,7 +59,7 @@ var initVis = function(error, root, orgs) {
       var string = "<div class='t-" + industries[i] + "'>" + industries[i] + "</div>";
       industries[i] = string;
     }
-    var close = "<img class='close' src='./assets/close.png'>";
+    var close = "<img class='close' src='./visualization/assets/close.png'>";
     return close + industries.join("");
   });
 
@@ -340,7 +340,7 @@ var initVis = function(error, root, orgs) {
 
     // photo and name
     html += "<div>";
-    html += "<img class='close' src='./assets/close.png'>";
+    html += "<img class='close' src='./visualization/assets/close.png'>";
     html += "<img class='logo' src ='http://fartpunch.com/wp-content/uploads/2012/11/341817_ermahgerd_sner.jpg' alt='logo'>";
     html += "<span>" + d.full_name + "</span>";
     html += "</div>";
@@ -349,9 +349,9 @@ var initVis = function(error, root, orgs) {
     var location = [d.city, d.state, d.country];
     location = $.grep(location, function(n) { return(n) });
     html += "<p>F. " + d.founded + " | " + location.join(", ") + " | "
-      + "<a href='" + d.url + "' target='_blank'>" + "<img class='web' src='./assets/web.png' alt='web'></a> "
+      + "<a href='" + d.url + "' target='_blank'>" + "<img class='web' src='./visualization/assets/web.png' alt='web'></a> "
       + "<a href='https://www.twitter.com/" + d.twitter_handle + "' target='_blank'>"
-      + "<img class='twitter' src='./assets/twitter.png' alt='twitter'></a></p>";
+      + "<img class='twitter' src='./visualization/assets/twitter.png' alt='twitter'></a></p>";
     html += "<p>" + money(d.total_raised) + " raised in total</p>";
     
     d3.select("#profile").html(html);
@@ -374,8 +374,8 @@ var initVis = function(error, root, orgs) {
 
 // wait until all data is loaded
 queue()
-  .defer(d3.json,"./assets/industries.json")
-  .defer(d3.json,"./assets/financial_orgs.json")
+  .defer(d3.json,"./visualization/assets/industries.json")
+  .defer(d3.json,"./visualization/assets/financial_orgs.json")
   .await(initVis);
 
 // focus
