@@ -17,9 +17,10 @@
     <!--Using Flatly swatch by default -->
     <link href="http://netdna.bootstrapcdn.com/bootswatch/3.0.3/yeti/bootstrap.min.css" rel="stylesheet">
 
-      <link href="visualization/final.css" rel="stylesheet">
+      <link href="./visualization/final.css" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="//d3js.org/d3.v3.min.js"></script>
+    <script src="//d3js.org/colorbrewer.v1.min.js"></script>
     <script src="//d3js.org/queue.v1.min.js"></script>
 
     <title>CS 171 Project: Startup Funding</title>
@@ -56,14 +57,13 @@
     </div><!-- /.navbar -->
 
     <div class="container">
-        <div id="bar"></div>
-      <div id="treemap"></div>
-      <div id="sidebar">
-        <div id="grandparent"></div>
-        <div id="industries"></div>
-        <div id="profile"></div>
-      </div>
-      <script src="visualization/final.js"></script>
-    </div>
+
+  <div id="barchart"></div>
+  <div id="treemap"></div>
+  <div id="sidebar"></div>
+  <script src="barchart.js"></script>
+  <script src="sidebar.js"></script>
+  <script src="final.js"></script>
+
   </body>
 </html>
