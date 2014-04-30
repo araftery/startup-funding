@@ -131,7 +131,7 @@ function drawSidebar(root, d, depth) {
 function showRound(name, num) {
   // highlight story
   sidebar.select(".news .story.v-" + num)
-    .style("background", "skyblue");
+    .style("background", "#def5ff");
 
   var html = "";
   var d = sidebar.select("circle.t-" + name + ".v-" + num).data()[0];
