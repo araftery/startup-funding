@@ -48,6 +48,7 @@ body {
 
 #treemap svg {
   background: #ddd;
+  padding:5px;
 }
 
 #treemap text {
