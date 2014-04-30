@@ -36,18 +36,10 @@ var svg = d3.select("#treemap").append("svg")
   .append("g")
     .style("shape-rendering", "crispEdges");
 
-// add the cookie crumb bar
+// add the bread crumb bar
 var grandparent = svg.append("g")
   .attr("class", "grandparent");
 
-grandparent.append("rect")
-  .attr("width", width_tm + margin_tm.left + margin_tm.right)
-  .attr("height", margin_tm.top);
-
-grandparent.append("text")
-  .attr("x", 6)
-  .attr("y", 5)
-  .attr("dy", ".75em");
 
 var initVis = function(error, root, orgs) {
   // set up the necessary tree structure
@@ -93,20 +85,38 @@ var initVis = function(error, root, orgs) {
     }
   }
 
+
+
+
   function display(d) {
-    grandparent
-      .datum(d.parent)
-      .on("click", function(d) {
-        transition(d)
-      })
-      .select("text")
-        .text(function() {
-          var str = name(d);
-          if (str !== "All Industries") {
-            str += " (X)";
-          }
-          return str;
-        });
+
+      function build_breadcrumb(d, first)
+      {
+        if (!first)
+        {
+          crumb = d3.select('ol.breadcrumb').insert('li', 'li:first-child');
+          crumb.append('a').html(d.name).attr('href', '#').on('click', function(){ transition(d) });
+        }
+        else
+        {
+          var crumb = d3.select('ol.breadcrumb').append('li');
+          crumb.html(d.name).attr('class', 'active');
+        }
+
+        if (d.parent)
+        {
+          return build_breadcrumb(d.parent)
+        }
+      }
+
+
+    var breadcrumb = d3.select('.breadcrumb')
+    
+    // clear breadcrumbs
+    breadcrumb.html('');
+
+    build_breadcrumb(d, true);
+
 
     var g1 = svg.insert("g", ".grandparent")
       .datum(d)
@@ -332,3 +342,4 @@ $(document).on("mouseover", "#sidebar .org", function() {
   event.initEvent("click", true, true);
   d3.select(".children .t-" + industry).node().dispatchEvent(event);
 });
+
