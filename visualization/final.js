@@ -278,8 +278,8 @@ var initVis = function(error, root, orgs) {
 
 // wait until all data is loaded
 queue()
-  .defer(d3.json,"assets/industries.json")
-  .defer(d3.json,"assets/financial_orgs.json")
+  .defer(d3.json,"./visualization/assets/industries.json")
+  .defer(d3.json,"./visualization/assets/financial_orgs.json")
   .await(initVis);
 
 // highlight on mouseover
