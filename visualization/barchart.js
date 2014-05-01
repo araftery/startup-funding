@@ -2,6 +2,7 @@ var color_bc = d3.scale.ordinal()
   .domain(["seed", "a", "b", "c", "d", "e"])
   .range(colorbrewer.YlGn[6].reverse());
 
+
 function drawBarChart(orgs) {
 	// set up variables for the bar chart
 	var margin_bc = {
@@ -63,7 +64,17 @@ function drawBarChart(orgs) {
     .attr("transform", "translate(0," + (height_bc - 70) + ")")
     .call(xAxis_bc)
     .selectAll("text")
-      .attr("class", function(d, i) { return "o-" + i; })
+      .attr("class", function(d, i) {
+        var full = "";
+        orgs.forEach(function(org) {
+          if (org.name === d) {
+            full = org.full_name;
+            return;
+          }
+        })
+
+        return "o-" + i + " " + full.replace(/[^A-Za-z]+/g, '');
+        })
       .style("text-anchor", "end")
       .attr("dx", "-.8em")
       .attr("dy", ".15em")
@@ -87,6 +98,7 @@ function drawBarChart(orgs) {
       .attr("class", function(d, i) {
         return "g org o-" + i;
       })
+      .attr('data-name', function(d){ return d.full_name })
       .attr("transform", function(d) { return "translate(" + x_bc(d.name) + ",0)"; })
       .on("mouseover", function(d, i) {
       	hoverOrg(d, i);

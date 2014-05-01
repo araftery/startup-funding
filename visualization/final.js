@@ -299,6 +299,64 @@ function hover(name, num) {
       sidebar.select("circle.t-" + name + ".v-" + num)
         .style("fill", "black");
       showRound(name, num);
+
+      var round_data = d3.select("#treemap text.t-" + name + ".v-" + num).data()[0]
+      round_data.investors.forEach(function(d){
+
+        d = d.replace(/^[a-zA-Z]*$/, "_");
+      });
+
+        // highlight firms invested in this round
+        d3.selectAll('#barchart .org')
+          .style('opacity', function(d){
+            var name = d3.select(this).attr('data-name');
+            if (jQuery.inArray(name, round_data.investors) != -1)
+            {
+              d3.select('.x text.' + name.replace(/[^A-Za-z]+/g, ''))
+                .style('opacity', 1);
+              return 1;
+            }
+            else
+            {
+              d3.select('.x text.' + name.replace(/[^A-Za-z]+/g, ''))
+                .style('opacity', .25);
+
+              return .25;
+            }
+          });
+          
+
+    }
+    else
+    {
+      // highlight firms invested in this company
+      var company_data = d3.select("#treemap .parent.t-" + name + ".v-" + num).data()[0]
+
+      company_data.investors.forEach(function(d){
+
+        d = d.replace(/^[a-zA-Z]*$/, "_");
+      });
+
+        // highlight firms invested in this round
+        d3.selectAll('#barchart .org')
+          .style('opacity', function(d){
+            var name = d3.select(this).attr('data-name');
+            if (jQuery.inArray(name, company_data.investors) != -1)
+            {
+              d3.select('.x text.' + name.replace(/[^A-Za-z]+/g, ''))
+                .style('opacity', 1);
+              return 1;
+            }
+            else
+            {
+              d3.select('.x text.' + name.replace(/[^A-Za-z]+/g, ''))
+                .style('opacity', .25);
+
+              return .25;
+            }
+          });
+
+
     }
   }
 };
@@ -317,6 +375,13 @@ function unhover() {
   sidebar.selectAll(".round").remove();
   sidebar.selectAll(".news .story")
     .style("background", "white");
+
+  d3.selectAll('#barchart .org')
+    .style('opacity', 1);
+
+  d3.selectAll('.x text')
+    .style('opacity', 1);
+
 };
 
 // highlight industry selectors
