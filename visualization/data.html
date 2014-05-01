@@ -1,0 +1,471 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>Data Specification</title>
+
+</head>
+<body>
+<h1>Data Specification</h1>
+
+<h2>Financial Orgs</h2>
+
+<ul>
+<li>Array of financial org objects, each in the following form:</li>
+</ul>
+
+
+<table>
+<thead>
+<tr>
+<th align="center"> Key        </th>
+<th align="center"> Description </th>
+<th align="center"> Sample Value </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"> name </td>
+<td align="center"> Short name of the financial organization. </td>
+<td align="center"> <code>Accel</code></td>
+</tr>
+<tr>
+<td align="center"> full_name </td>
+<td align="center"> Proper name of the financial organization. </td>
+<td align="center"> <code>Accel Partners</code></td>
+</tr>
+<tr>
+<td align="center"> total_invested </td>
+<td align="center"> Total capital invested. Note: this is just a sum of the amounts of <em>all</em> rounds the firm was involved in. So, this is a <strong>very</strong> inflated estimate (particularly for firms involved in later-stage investing). </td>
+<td align="center"> <code>9428541785</code></td>
+</tr>
+<tr>
+<td align="center"> num_companies </td>
+<td align="center"> Integer value, total number of companies invested in. </td>
+<td align="center"> <code>301</code></td>
+</tr>
+<tr>
+<td align="center"> industries </td>
+<td align="center"> Object with industries as keys and the number of companies of that industriy in the financial org's portfolio as values </td>
+<td></td>
+</tr>
+<tr>
+<td align="center"> round_codes </td>
+<td align="center"> Object with round codes as keys and the number of rounds of that type the financial org's has invested in as values </td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>Example JSON</h3>
+
+<pre><code>{
+    "name": "Accel",
+    "full_name": "Accel Partners",
+    "total_invested": 9428541785, 
+    "num_companies": 301
+    "industries": {...},
+    "round_codes": {...},
+}
+</code></pre>
+
+<h2>Industries</h2>
+
+<ul>
+<li>Array of industry objects, which hold arrays of company objects, which hold arrays of round objects each in the following form:</li>
+</ul>
+
+
+<h2>Industries, industry objects</h2>
+
+<h3>Industries, industry objects</h3>
+
+<table>
+<thead>
+<tr>
+<th align="center"> Key        </th>
+<th align="center"> Description </th>
+<th align="center"> Sample Value </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"> name    </td>
+<td align="center"> Industry name </td>
+<td align="center"> <code>network_hosting</code></td>
+</tr>
+<tr>
+<td align="center"> children     </td>
+<td align="center"> Array of company objects (see below) </td>
+<td align="center"> (see below)</td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>Industries, company objects</h3>
+
+<table>
+<thead>
+<tr>
+<th align="center"> Key        </th>
+<th align="center"> Description </th>
+<th align="center"> Sample Value </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"> name </td>
+<td align="center"> Company proper name </td>
+<td align="center"> <code>Dropbox</code></td>
+</tr>
+<tr>
+<td align="center"> permalink </td>
+<td align="center"> Company permalink, for lookup in other data, or from the Crunchbase API (sometimes this is different altogether from the plaintext name) </td>
+<td align="center"> <code>dropbox</code></td>
+</tr>
+<tr>
+<td align="center"> founded </td>
+<td align="center"> Integer value, year founded, may be <code>null</code>. </td>
+<td align="center"> <code>2007</code></td>
+</tr>
+<tr>
+<td align="center"> industry </td>
+<td align="center"> Industry category </td>
+<td align="center"> <code>network_hosting</code></td>
+</tr>
+<tr>
+<td align="center"> tags </td>
+<td align="center"> Comma-delimited list of tags describing the company. May be <code>null</code>. </td>
+<td align="center"> techcrunch50, tc50, file-storage</td>
+</tr>
+<tr>
+<td align="center"> overview </td>
+<td align="center"> Description of the company. May be <code>null</code>. </td>
+<td align="center"> Dropbox was founded in 2007 by Drew Houston and Arash Ferdowsi. Frustrated by working from multiple computers, Drew was inspired to create a service  [...]</td>
+</tr>
+<tr>
+<td align="center"> city </td>
+<td align="center"> City the company is located in. May be <code>null</code>. </td>
+<td align="center"> San Francisco</td>
+</tr>
+<tr>
+<td align="center"> state </td>
+<td align="center"> State the company is located in (US postal code). May be <code>null</code>. </td>
+<td align="center"> CA</td>
+</tr>
+<tr>
+<td align="center"> country </td>
+<td align="center"> Country the company is located in (abbreviation). May be <code>null</code>. </td>
+<td align="center"> USA</td>
+</tr>
+<tr>
+<td align="center"> twitter_handle </td>
+<td align="center"> Company's Twitter handle. May be <code>null</code>. </td>
+<td align="center"> Dropbox</td>
+</tr>
+<tr>
+<td align="center"> crunchbase_url </td>
+<td align="center"> URL to the company's Crunchbase profile. </td>
+<td align="center"> http://www.crunchbase.com/company/dropbox</td>
+</tr>
+<tr>
+<td align="center"> url </td>
+<td align="center"> URL to the company's website. May be <code>null</code>. </td>
+<td align="center"> http://www.dropbox.com/</td>
+</tr>
+<tr>
+<td align="center"> image_url </td>
+<td align="center"> URL to the company's logo. May be <code>null</code>. </td>
+<td align="center"> http://img.talkandroid.com/uploads/2012/12/Dropbox-Logo.png</td>
+</tr>
+<tr>
+<td align="center"> people </td>
+<td align="center"> List of founders, co-founders, CEOs, etc. Array of <code>person</code> objects, which have two attributes, name and title. May be <code>null</code>. </td>
+<td></td>
+</tr>
+<tr>
+<td align="center"> employees </td>
+<td align="center"> Integer value, number of employees. May be <code>null</code>. </td>
+<td align="center"> <code>642</code></td>
+</tr>
+<tr>
+<td align="center"> total_raised </td>
+<td align="center"> Integer value, total amount raised (sum of all rounds) </td>
+<td align="center"> <code>607200000</code></td>
+</tr>
+<tr>
+<td align="center"> children     </td>
+<td align="center"> Array of round objects, ordered by date (see below) </td>
+<td align="center"> (see below)</td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>Industries, round objects</h3>
+
+<table>
+<thead>
+<tr>
+<th align="center"> Key </th>
+<th align="center"> Description </th>
+<th align="center"> Sample Value </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"> date </td>
+<td align="center"> Date of the round as a string in form MM/DD/YY </td>
+<td align="center"> <code>02/05/13</code></td>
+</tr>
+<tr>
+<td align="center"> amount </td>
+<td align="center"> Integer value, total raised in the round (by all investors). May be <code>null</code>. </td>
+<td align="center"> <code>2500000</code></td>
+</tr>
+<tr>
+<td align="center"> currency </td>
+<td align="center"> Currency used in the <code>amount</code> value. Almost always USD. </td>
+<td align="center"> <code>USD</code></td>
+</tr>
+<tr>
+<td align="center"> round_code </td>
+<td align="center"> Type of round as a string. </td>
+<td align="center"> <code>seed</code></td>
+</tr>
+<tr>
+<td align="center"> investors </td>
+<td align="center"> Array of investor names (strings) that were involved in the round. These are their proper names, not permalinks. </td>
+<td align="center"> <code>['Accel Partners',]</code></td>
+</tr>
+<tr>
+<td align="center"> source_url </td>
+<td align="center"> URL to a news article about the round. May be <code>null</code> </td>
+<td align="center"> http://techcrunch.com/2011/10/18/dropbox-raises-250m-in-funding-boasts-45-million-users/</td>
+</tr>
+<tr>
+<td align="center"> source_title </td>
+<td align="center"> Headline for the source article. May be <code>null</code> </td>
+<td align="center"> Dropbox Raises $250M In Funding, Boasts 45 Million Users</td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>Example JSON</h3>
+
+<pre><code>{
+    "name": "network_hosting",
+    "children": [
+        {
+            "children": [
+                    {
+                        "amount": 1200000,
+                        "currency": "USD",
+                        "date": "09/04/08",
+                        "investors": [
+                            "Sequoia Capital"
+                        ],
+                        "name": "seed",
+                        "source_url": "http://www.techcrunch.com/2008/09/04/secretive-storage-company-dropbox-took-sequoia-funding-in-2007/",
+                        "source_title": null,
+                    },
+                ],
+            "city": "San Francisco",
+            "company_permalink": "dropbox",
+            "country": "USA",
+            "crunchbase_url": "http://www.crunchbase.com/company/dropbox",
+            "employees": 642,
+            "image_url": "http://img.talkandroid.com/uploads/2012/12/Dropbox-Logo.png",
+            "industry": "network_hosting",
+            "investors": [
+                "T. Rowe Price",
+                "Greylock Partners",
+                "Institutional Venture Partners",
+                "Goldman Sachs",
+                "Sequoia Capital",
+                "Valiant Capital Partners",
+                "Glynn Capital Management",
+                "Index Ventures",
+                "Accel Partners",
+                "RIT Capital Partners",
+                "BlackRock",
+                "SV Angel",
+                "Benchmark"
+            ],
+            "name": "Dropbox",
+            "overview": "Dropbox was founded in 2007 by Drew Houston and Arash Ferdowsi. Frustrated by working from multiple computers, Drew was inspired to create a service that would let people bring all their files anywhere, with no need to email around attachments. Drew created a demo of Dropbox and showed it to fellow MIT student Arash Ferdowsi, who dropped out with only one semester left to help make Dropbox a reality. Guiding their decisions was a relentless focus on crafting a simple and reliable experience across every computer and phone. Drew and Arash moved to San Francisco in fall 2007, secured seed funding from Y Combinator, and set about building a world-class engineering team. In fall 2008, Sequoia Capital led a $7.2M Series A with Accel Partners to help bring Dropbox to people everywhere.",
+            "people": [
+                {
+                    "name": "Drew Houston",
+                    "title": "Founder &amp; CEO"
+                },
+                {
+                    "name": "Arash Ferdowsi",
+                    "title": "Founder &amp; CTO"
+                }
+            ],
+            "state": "CA",
+            "tags": "techcrunch50, tc50, file-storage",
+            "total_raised": 607200000,
+            "twitter_handle": "Dropbox",
+            "url": "http://www.dropbox.com",
+
+        }
+    ]
+}
+</code></pre>
+</body>
+</html>

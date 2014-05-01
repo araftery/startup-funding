@@ -6,20 +6,27 @@
 
 | Key        | Description | Sample Value |
 |:----------:|:-----------:|:------------:|
-| name | Proper name of the financial organization. | `Accel Partners`
+| name | Short name of the financial organization. | `Accel`
+| full_name | Proper name of the financial organization. | `Accel Partners`
 | total_invested | Total capital invested. Note: this is just a sum of the amounts of *all* rounds the firm was involved in. So, this is a **very** inflated estimate (particularly for firms involved in later-stage investing). | `9428541785`
 | num_companies | Integer value, total number of companies invested in. | `301`
+| industries | Object with industries as keys and the number of companies of that industriy in the financial org's portfolio as values | 
+| round_codes | Object with round codes as keys and the number of rounds of that type the financial org's has invested in as values | 
+
 
 ### Example JSON
 
     {
-        "name": "Accel Partners", 
+        "name": "Accel",
+        "full_name": "Accel Partners",
         "total_invested": 9428541785, 
         "num_companies": 301
+        "industries": {...},
+        "round_codes": {...},
     }
 
 ## Industries
-* Array of industry objects, which hold arrays of company objects, each in the following form:
+* Array of industry objects, which hold arrays of company objects, which hold arrays of round objects each in the following form:
 
 ## Industries, industry objects
 
@@ -46,7 +53,7 @@
 | twitter_handle | Company's Twitter handle. May be `null`. | Dropbox
 | crunchbase_url | URL to the company's Crunchbase profile. | http://www.crunchbase.com/company/dropbox
 | url | URL to the company's website. May be `null`. | http://www.dropbox.com/
-| image_url | URL to the company's logo. May be `null`. | http://www.crunchbase.com/assets/images/resized/0001/1969/11969v19-max-450x450.png
+| image_url | URL to the company's logo. May be `null`. | http://img.talkandroid.com/uploads/2012/12/Dropbox-Logo.png
 | people | List of founders, co-founders, CEOs, etc. Array of `person` objects, which have two attributes, name and title. May be `null`. | 
 | employees | Integer value, number of employees. May be `null`. | `642`
 | total_raised | Integer value, total amount raised (sum of all rounds) | `607200000`
@@ -61,7 +68,9 @@
 | amount | Integer value, total raised in the round (by all investors). May be `null`. | `2500000`
 | currency | Currency used in the `amount` value. Almost always USD. | `USD`
 | round_code | Type of round as a string. | `seed`
-| investors | Array of investor names (strings) that were involved in the round. These are their proper names, not permalinks. | `['Accel Partners',]`    
+| investors | Array of investor names (strings) that were involved in the round. These are their proper names, not permalinks. | `['Accel Partners',]`
+| source_url | URL to a news article about the round. May be `null` | http://techcrunch.com/2011/10/18/dropbox-raises-250m-in-funding-boasts-45-million-users/
+| source_title | Headline for the source article. May be `null` | Dropbox Raises $250M In Funding, Boasts 45 Million Users
 
 
 ### Example JSON
@@ -78,7 +87,9 @@
 	                        "investors": [
                             	"Sequoia Capital"
                         	],
-                        	"name": "seed"
+                        	"name": "seed",
+                        	"source_url": "http://www.techcrunch.com/2008/09/04/secretive-storage-company-dropbox-took-sequoia-funding-in-2007/",
+                        	"source_title": null,
                     	},
                     ],
                 "city": "San Francisco",
@@ -86,7 +97,7 @@
                 "country": "USA",
                 "crunchbase_url": "http://www.crunchbase.com/company/dropbox",
                 "employees": 642,
-                "image_url": "http://www.crunchbase.com/assets/images/resized/0001/1969/11969v19-max-450x450.png",
+                "image_url": "http://img.talkandroid.com/uploads/2012/12/Dropbox-Logo.png",
                 "industry": "network_hosting",
                 "investors": [
                     "T. Rowe Price",
@@ -119,7 +130,8 @@
                 "tags": "techcrunch50, tc50, file-storage",
                 "total_raised": 607200000,
                 "twitter_handle": "Dropbox",
-                "url": "http://www.dropbox.com"
+                "url": "http://www.dropbox.com",
+                
             }
         ]
     }
