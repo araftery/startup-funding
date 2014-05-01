@@ -26,9 +26,9 @@ function drawSidebar(root, d, depth) {
   var location = [d.city, d.state, d.country];
   location = $.grep(location, function(n) { return(n) });
   html += "<div class='details'><p>F. " + d.founded + " | " + location.join(", ") + " | "
-    + "<a href='" + d.url + "' target='_blank'>" + "<img class='web' src='./visualization/assets/web.png' alt='web'></a> "
+    + "<a href='" + d.url + "' target='_blank'>" + "<img class='web' src='assets/web.png' alt='web'></a> "
     + "<a href='https://www.twitter.com/" + d.twitter_handle + "' target='_blank'>"
-    + "<img class='twitter' src='./visualization/assets/twitter.png' alt='twitter'></a></p>";
+    + "<img class='twitter' src='assets/twitter.png' alt='twitter'></a></p>";
   html += "<p>" + money(d.total_raised) + " raised in total</p></div>";
   html += "<div class='overview'>" + d.overview + "</div>";
   html += "<br><div class='name'>Rounds</div>";
@@ -135,7 +135,7 @@ function showRound(name, num) {
 
   var html = "";
   var d = sidebar.select("circle.t-" + name + ".v-" + num).data()[0];
-  if (d.name) {
+  if (d && d.name) {
     html += d.name.replace(/_/g, " ") + " | ";
   }
   html += d.date + " | ";

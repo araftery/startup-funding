@@ -3,6 +3,12 @@
 body {
   font-family: sans-serif;
   font-size: 10px;
+
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 #barchart {
@@ -47,6 +53,15 @@ body {
 
 /* TREEMAP */
 
+.breadcrumb {
+  background: none !important;  
+  display: block;
+}
+
+.breadcrumb a {
+  cursor: pointer;
+}
+
 #treemap svg {
   background: #ddd;
   padding:5px;
@@ -82,12 +97,6 @@ rect.parent,
 /* SIDEBAR */
 
 #sidebar {
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-
   font-size: 12px;
 }
 
@@ -102,6 +111,17 @@ rect.parent,
   cursor: pointer;
   font-size: 10px;
   text-align: center;
+}
+
+#sidebar .name,
+#sidebar .details,
+#sidebar .overview,
+#sidebar .news {
+  -webkit-user-select: all;
+  -khtml-user-select: all;
+  -moz-user-select: all;
+  -ms-user-select: all;
+  user-select: all;
 }
 
 #sidebar .name {
@@ -134,10 +154,4 @@ rect.parent,
 
 #sidebar .round {
   text-align: center;
-}
-
-.breadcrumb
-{
-  display:block;
-  background:none !important;  
 }

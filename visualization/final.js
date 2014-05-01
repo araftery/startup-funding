@@ -85,38 +85,27 @@ var initVis = function(error, root, orgs) {
     }
   }
 
-
-
-
   function display(d) {
 
-      function build_breadcrumb(d, first)
-      {
-        if (!first)
-        {
-          crumb = d3.select('ol.breadcrumb').insert('li', 'li:first-child');
-          crumb.append('a').html(d.name).attr('href', '#').on('click', function(){ transition(d) });
-        }
-        else
-        {
-          var crumb = d3.select('ol.breadcrumb').append('li');
-          crumb.html(d.name).attr('class', 'active');
-        }
-
-        if (d.parent)
-        {
-          return build_breadcrumb(d.parent)
-        }
+    function build_breadcrumb(d, first) {
+      if (!first) {
+        crumb = d3.select("ol.breadcrumb").insert("li", "li:first-child");
+        crumb.append("a").html(name(d)).on("click", function(){ transition(d) });
+      } else {
+        var crumb = d3.select("ol.breadcrumb").append("li");
+        crumb.html(name(d)).attr("class", "active");
       }
 
+      if (d.parent) {
+        return build_breadcrumb(d.parent)
+      }
+    };
 
-    var breadcrumb = d3.select('.breadcrumb')
+    var breadcrumb = d3.select(".breadcrumb")
     
     // clear breadcrumbs
-    breadcrumb.html('');
-
+    breadcrumb.html("");
     build_breadcrumb(d, true);
-
 
     var g1 = svg.insert("g", ".grandparent")
       .datum(d)
@@ -272,14 +261,14 @@ var initVis = function(error, root, orgs) {
       n = (d.name.replace(/_/g, " ")).replace(/\b./g, function(m){ return m.toUpperCase(); });
     }
 
-    return d.parent ? name(d.parent) + " / " + n : n;
+    return n;
   }
 };
 
 // wait until all data is loaded
 queue()
-  .defer(d3.json,"./visualization/assets/industries.json")
-  .defer(d3.json,"./visualization/assets/financial_orgs.json")
+  .defer(d3.json,"assets/industries.json")
+  .defer(d3.json,"assets/financial_orgs.json")
   .await(initVis);
 
 // highlight on mouseover

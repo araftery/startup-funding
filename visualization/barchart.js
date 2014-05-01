@@ -129,11 +129,11 @@ function hoverOrg(d, i) {
     // highlight org
     d3.selectAll("#barchart .org")
       .style("opacity", "0.25");
-    d3.selectAll("#barchart .tick text")
+    d3.selectAll("#barchart .x .tick text")
       .style("opacity", "0.25");
     d3.select("#barchart .org.o-" + i)
       .style("opacity", "1.0");
-    d3.select("#barchart .tick text.o-" + i)
+    d3.select("#barchart .x .tick text.o-" + i)
       .style("opacity", "1.0");
   }
 
@@ -177,7 +177,7 @@ function unhoverOrg(d, i) {
     // highlight all orgs
     d3.selectAll("#barchart .org")
       .style("opacity", "1.0");
-    d3.selectAll("#barchart .tick text")
+    d3.selectAll("#barchart .x .tick text")
       .style("opacity", "1.0");
 
     // highlight all treemap
