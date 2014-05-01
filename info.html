@@ -17,19 +17,23 @@
     <!--Using Flatly swatch by default -->
     <link href="http://netdna.bootstrapcdn.com/bootswatch/3.0.3/yeti/bootstrap.min.css" rel="stylesheet">
 
-      <link href="./visualization/final.css" rel="stylesheet">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//d3js.org/d3.v3.min.js"></script>
-    <script src="//d3js.org/colorbrewer.v1.min.js"></script>
-    <script src="//d3js.org/queue.v1.min.js"></script>
 
-    <title>CS 171 Project: Startup Funding</title>
+    <title>CS 171 Project: Startup Funding - Walkthrough</title>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+
+    <style>
+      .video
+      {
+        margin:auto;
+        width:853px;
+      }
+    </style>
+
 
   </head>
 <body>
@@ -46,8 +50,8 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="./">Home</a></li>
-            <li><a href="./info.html">Info</a></li>
+            <li><a href="./">Home</a></li>
+            <li class="active"><a href="./info.html">Info</a></li>
             <li><a href="./walkthrough.html">Walkthrough</a></li>
             <li><a href="./processbook.html">Process Book</a></li>
 
@@ -58,13 +62,17 @@
     </div><!-- /.navbar -->
 
     <div class="container">
-  <div id="barchart"></div>
-  <ol class="breadcrumb"></ol>
-  <div id="treemap"></div>
-  <div id="sidebar"></div>
-  <script src="./visualization/barchart.js"></script>
-  <script src="./visualization/sidebar.js"></script>
-  <script src="./visualization/final.js"></script>
+      <div class="row">
+        <div class="col-md-6 col-sm-6">
+          <h1>Data</h1>
+          Data was obtained from the <a href="http://developer.crunchbase.com/">CrunchBase API</a>. The dataset is not exhaustive. We limited our search to portfolio companies of 20 top firms. You can download the full raw dataset <a href="./visualization/assets/industries.json">here</a>.
+        </div>
 
+        <div class="col-md-6 col-sm-6">
+          <h1>Acknowledgements</h1>
+          This visualization was created by Jason Hirschhorn, Andrew Raftery, and David Taitz as a final project for <a href="http://cs171.org">CS 171</a> at Harvard.
+        </div>
+      </div>
+    </div>
   </body>
 </html>
